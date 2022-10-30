@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import './transaction.dart';
 
 void main() => runApp(MyApp());
@@ -43,7 +44,6 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Column(
           // enum:- Is a couple of different values!
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             // Chart text!
@@ -56,6 +56,31 @@ class MyHomePage extends StatelessWidget {
                 ),
                 elevation: 5,
               ),
+            ),
+            // Text input fields!
+            Card(
+              elevation: 5,
+              child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        TextField(
+                          decoration: InputDecoration(labelText: 'Title'),
+                        ),
+                        TextField(
+                          decoration: InputDecoration(labelText: 'Amount'),
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "Add transaction",
+                          ),
+                          style: TextButton.styleFrom(
+                              textStyle: TextStyle(fontSize: 18),
+                              foregroundColor: Colors.orange),
+                        ),
+                      ])),
             ),
             // List of transaction items!
             Column(
@@ -88,7 +113,7 @@ class MyHomePage extends StatelessWidget {
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            transaction.date.toString(),
+                            DateFormat().format(transaction.date),
                             style: TextStyle(color: Colors.grey, fontSize: 16),
                           )
                         ])
