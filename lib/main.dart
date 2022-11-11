@@ -23,6 +23,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 211, 176, 19),
         title: Text('Expense tracker'),
       ),
       body: SingleChildScrollView(
@@ -34,7 +35,7 @@ class MyHomePage extends StatelessWidget {
             Container(
               width: double.infinity,
               child: Card(
-                color: Colors.orange,
+                color: Color.fromARGB(255, 211, 176, 19),
                 child: Text(
                   'Chart text!',
                 ),

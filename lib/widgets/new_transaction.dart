@@ -41,10 +41,11 @@ class NewTransaction extends StatelessWidget {
               },
               child: Text(
                 "Add transaction",
+                style: TextStyle(fontWeight: FontWeight.w500),
               ),
               style: TextButton.styleFrom(
                   textStyle: TextStyle(fontSize: 18),
-                  foregroundColor: Colors.orange),
+                  foregroundColor: Color.fromARGB(255, 211, 176, 19)),
             ),
           ],
         ),
