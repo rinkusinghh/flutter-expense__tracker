@@ -25,23 +25,25 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Expense tracker'),
       ),
-      body: Column(
-        // enum:- Is a couple of different values!
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          // Chart text!
-          Container(
-            width: double.infinity,
-            child: Card(
-              color: Colors.orange,
-              child: Text(
-                'Chart text!',
+      body: SingleChildScrollView(
+        child: Column(
+          // enum:- Is a couple of different values!
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            // Chart text!
+            Container(
+              width: double.infinity,
+              child: Card(
+                color: Colors.orange,
+                child: Text(
+                  'Chart text!',
+                ),
+                elevation: 5,
               ),
-              elevation: 5,
             ),
-          ),
-          UserTransaction(),
-        ],
+            UserTransaction(),
+          ],
+        ),
       ),
     );
   }
