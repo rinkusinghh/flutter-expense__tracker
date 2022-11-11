@@ -17,10 +17,11 @@ class TransactionList extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   decoration: BoxDecoration(
-                      border: Border.all(
-                    color: Colors.orange,
-                    width: 2,
-                  )),
+                    border: Border.all(
+                      color: Colors.orange,
+                      width: 2,
+                    ),
+                  ),
                   padding: EdgeInsets.all(10),
                   child: Text(
                     '\₹${transaction.amount.toString()}',
