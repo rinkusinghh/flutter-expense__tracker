@@ -12,6 +12,9 @@ class MyApp extends StatelessWidget {
       title: 'Expense tracker',
       home: MyHomePage(),
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
     );
   }
 }
@@ -70,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 211, 176, 19),
+        backgroundColor: Theme.of(context).primaryColor,
         title: Text('Expense tracker'),
         actions: [
           IconButton(
@@ -108,3 +111,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+// fromARGB(255, 211, 176, 19)
