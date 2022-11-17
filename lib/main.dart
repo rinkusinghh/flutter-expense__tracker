@@ -13,10 +13,15 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.green,
-        fontFamily: 'Quicksand',
-        // appBarTheme: AppBarTheme(textTheme: ),
-      ),
+          primarySwatch: Colors.green,
+          fontFamily: 'Quicksand',
+          // appBarTheme: AppBarTheme(textTheme: ),
+          appBarTheme: AppBarTheme(
+            titleTextStyle: TextStyle(
+                fontFamily: 'OpenSans',
+                fontWeight: FontWeight.bold,
+                fontSize: 22),
+          )),
     );
   }
 }
@@ -28,24 +33,24 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransaction = [
-    Transaction(
-      id: 't1',
-      title: 'Weekly Grocery!',
-      amount: 500,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'New Items!',
-      amount: 800,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't3',
-      title: 'Food Items',
-      amount: 1000,
-      date: DateTime.now(),
-    ),
+    // Transaction(
+    //   id: 't1',
+    //   title: 'Weekly Grocery!',
+    //   amount: 500,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't2',
+    //   title: 'New Items!',
+    //   amount: 800,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't3',
+    //   title: 'Food Items',
+    //   amount: 1000,
+    //   date: DateTime.now(),
+    // ),
   ];
 
   void _addUserTransaction(String txTitle, double txAmount) {
@@ -93,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               width: double.infinity,
               child: Card(
-                color: Color.fromARGB(255, 211, 176, 19),
+                color: Color.fromARGB(255, 6, 151, 61),
                 child: Text(
                   'Chart text!',
                 ),
