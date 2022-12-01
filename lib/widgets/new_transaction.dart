@@ -51,7 +51,7 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
               style: TextButton.styleFrom(
                   textStyle: TextStyle(fontSize: 18),
-                  foregroundColor: Color.fromARGB(255, 211, 176, 19)),
+                  foregroundColor: Colors.green[300]),
             ),
           ],
         ),

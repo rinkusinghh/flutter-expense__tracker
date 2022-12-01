@@ -39,7 +39,7 @@ class TransactionList extends StatelessWidget {
                             EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: Color.fromARGB(255, 211, 176, 19),
+                            color: Colors.green,
                             width: 2,
                           ),
                         ),
