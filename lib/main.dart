@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text('Expense tracker'),
+        title: Text('Expense Tracker'),
         actions: [
           IconButton(
             icon: Icon(Icons.add),
