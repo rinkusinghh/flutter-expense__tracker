@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primarySwatch: Colors.green,
+          errorColor: Colors.red,
           fontFamily: 'Quicksand',
           // appBarTheme: AppBarTheme(textTheme: ),
           appBarTheme: AppBarTheme(
@@ -60,7 +61,11 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _addUserTransaction(String txTitle, double txAmount) {
+  void _addUserTransaction(
+    String txTitle,
+    double txAmount,
+    /* DateTime chosenDate */
+  ) {
     final newTx = Transaction(
         id: DateTime.now().toString(),
         title: txTitle,
@@ -83,6 +88,10 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
+  void _deleteTransaction(String id) {
+    setState(() => _userTransaction.removeWhere((tx) => tx.id == id));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             // Chart text!
             Chart(_recentTransactions),
-            TransactionList(_userTransaction),
+            TransactionList(_userTransaction, _deleteTransaction),
           ],
         ),
       ),
