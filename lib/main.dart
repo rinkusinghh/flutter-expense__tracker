@@ -102,6 +102,48 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() => _userTransaction.removeWhere((tx) => tx.id == id));
   }
 
+  // Builder Method
+  List<Widget> _buildLanscapeWidget(
+      MediaQueryData mediaQuery, AppBar appBar, Widget txListWidget) {
+    return [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'Show Chart',
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          Switch.adaptive(
+              value: _showChart,
+              onChanged: (val) {
+                setState(() => _showChart = val);
+              })
+        ],
+      ),
+      _showChart
+          ? Container(
+              height: (mediaQuery.size.height -
+                      mediaQuery.padding.top -
+                      appBar.preferredSize.height) *
+                  0.6,
+              child: Chart(_recentTransactions))
+          : txListWidget
+    ];
+  }
+
+  List<Widget> _buildPortraitWidget(
+      MediaQueryData mediaQuery, AppBar appBar, Widget txListWidget) {
+    return [
+      Container(
+          height: (mediaQuery.size.height -
+                  mediaQuery.padding.top -
+                  appBar.preferredSize.height) *
+              0.3,
+          child: Chart(_recentTransactions)),
+      txListWidget
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -127,48 +169,24 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
     final pageBody = SafeArea(
-        child: SingleChildScrollView(
-      child: Column(
-        // enum:- Is a couple of different values!
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          if (isLandscape)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Show Chart',
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                Switch.adaptive(
-                    value: _showChart,
-                    onChanged: (val) {
-                      setState(() => _showChart = val);
-                    })
-              ],
-            ),
-          if (!isLandscape)
-            Container(
-                height: (mediaQuery.size.height -
-                        mediaQuery.padding.top -
-                        appBar.preferredSize.height) *
-                    0.3,
-                child: Chart(_recentTransactions)),
-          if (!isLandscape) txListWidget,
+      child: SingleChildScrollView(
+        child: Column(
+          // enum:- Is a couple of different values!
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            if (isLandscape)
+              ..._buildLanscapeWidget(mediaQuery, appBar, txListWidget),
 
-          // Chart text!
-          if (isLandscape)
-            _showChart
-                ? Container(
-                    height: (mediaQuery.size.height -
-                            mediaQuery.padding.top -
-                            appBar.preferredSize.height) *
-                        0.6,
-                    child: Chart(_recentTransactions))
-                : txListWidget
-        ],
+            if (!isLandscape)
+              ..._buildPortraitWidget(mediaQuery, appBar, txListWidget),
+            // if (!isLandscape) txListWidget,
+
+            // Chart text!
+            // if (isLandscape)
+          ],
+        ),
       ),
-    ));
+    );
 
     return Scaffold(
       appBar: AppBar(
